@@ -24,7 +24,7 @@ class _SignUpFormState extends State<SignUpForm> {
   String? name;
   String? email;
   String? password;
-  String? conform_password;
+  String? confirmPassword;
   bool remember = false;
   final List<String> errors = [];
 
@@ -37,10 +37,11 @@ class _SignUpFormState extends State<SignUpForm> {
   }
 
   void removeError({required String error}) {
-    if (errors.contains(error))
+    if (errors.contains(error)) {
       setState(() {
         errors.remove(error);
       });
+    }
   }
 
   @override
@@ -95,14 +96,14 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildConformPassFormField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) => conform_password = newValue,
+      onSaved: (newValue) => confirmPassword = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
-        } else if (value.isNotEmpty && password == conform_password) {
+        } else if (value.isNotEmpty && password == confirmPassword) {
           removeError(error: kMatchPassError);
         }
-        conform_password = value;
+        confirmPassword = value;
       },
       validator: (value) {
         if (value!.isEmpty) {
@@ -155,7 +156,7 @@ class _SignUpFormState extends State<SignUpForm> {
             borderRadius: BorderRadius.circular(20)
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
+        suffixIcon: const CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
       ),
     );
   }
@@ -170,7 +171,7 @@ class _SignUpFormState extends State<SignUpForm> {
         } else if (emailValidatorRegExp.hasMatch(value)) {
           removeError(error: kInvalidEmailError);
         }
-        return null;
+        return;
       },
       validator: (value) {
         if (value!.isEmpty) {

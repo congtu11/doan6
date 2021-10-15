@@ -1,8 +1,6 @@
 import 'package:daoan6/Pages/home/home_page.dart';
-import 'package:daoan6/Pages/intro_page/intro_page.dart';
-import 'package:daoan6/Pages/splash_page.dart';
+
 import 'package:daoan6/routes.dart';
-import 'package:daoan6/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

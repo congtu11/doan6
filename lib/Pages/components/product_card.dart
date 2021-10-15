@@ -1,3 +1,4 @@
+import 'package:daoan6/Pages/details/details_screen.dart';
 import 'package:daoan6/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,11 +25,9 @@ class ProductCard extends StatelessWidget {
       child: SizedBox(
         width: getProportionateScreenWidth(width),
         child: GestureDetector(
-          // onTap: () => Navigator.pushNamed(
-          //   context,
-          //   DetailsScreen.routeName,
-          //   arguments: ProductDetailsArguments(product: product),
-          // ),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsScreen(product: product)));
+          },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -40,16 +39,13 @@ class ProductCard extends StatelessWidget {
                     color: kSecondaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Hero(
-                    tag: product.id.toString(),
-                    child: Image.asset(product.images[0]),
-                  ),
+                  child: Image.asset(product.images[0]),
                 ),
               ),
               const SizedBox(height: 10),
               Text(
                 product.title,
-                style: TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.black),
                 maxLines: 2,
               ),
               Row(

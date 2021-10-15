@@ -1,4 +1,4 @@
-import 'package:daoan6/Pages/forgot_password/components/body.dart';
+
 import 'package:daoan6/Pages/home/components/recommend_product.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +6,7 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 import 'categories.dart';
 import 'discount_banner.dart';
-import 'home_header.dart';
+
 import 'popular_product.dart';
 import 'special_offers.dart';
 import 'dart:async';
@@ -23,7 +23,6 @@ class _BodyState extends State<Body> {
 
    newSlide() {
     if(pageController.hasClients) {
-      print("ABC");
       Timer.periodic(Duration(seconds: 4), (timer) {
         if(currentPage <2 ) {
           currentPage += 1;
@@ -31,9 +30,8 @@ class _BodyState extends State<Body> {
         else if(currentPage == 2){
           currentPage = 0;
         }
-        print(currentPage.toString());
         pageController.animateToPage(currentPage, duration: Duration(milliseconds: 500), curve: Curves.linear);
-        print("da nhay");
+
       });
 
     }

@@ -52,9 +52,9 @@ List<Product> demoProducts = [
       "assets/images/Image Popular Product 2.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     title: "Nike Sport White - Man Pant",
@@ -69,9 +69,9 @@ List<Product> demoProducts = [
       "assets/images/glap.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     title: "Gloves XC Omega - Polygon",
@@ -87,9 +87,9 @@ List<Product> demoProducts = [
       "assets/images/wireless headset.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     title: "Logitech Head",
@@ -101,4 +101,6 @@ List<Product> demoProducts = [
 ];
 
 const String description =
-    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …";
+    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing"
+    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing"
+    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharingâ";

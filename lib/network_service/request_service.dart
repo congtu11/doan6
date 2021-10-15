@@ -1,14 +1,14 @@
 import 'dart:async';
-
-import 'package:daoan6/models/access_token.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+
 
 class ApiHelper {
   final String _rootUrl = 'http://192.168.43.23:8000/api/v1';
-  final storage = new FlutterSecureStorage();
+  final storage = FlutterSecureStorage();
   late Map<String,String> token;
   ApiService() {
     getToken();
@@ -46,7 +46,6 @@ class ApiHelper {
     } on TimeoutException catch (value) {
       return http.Response("Null", 408);
     }
-    ;
   }
 
   postDataWithAuth(data, apiUrl) async {

@@ -4,13 +4,15 @@ import 'package:daoan6/main.dart';
 import 'package:flutter/material.dart';
 
 import '../size_config.dart';
-import 'home/home_page.dart';
 import 'intro_page/intro_page.dart';
 
 
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
+
+  @override
   _SplashScreenState createState() => _SplashScreenState();
 
 }
@@ -48,33 +50,29 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Container(
-      child: Container(
-        child: SafeArea(
-          child: Scaffold(
-            body: Column(
-              children: <Widget>[
-                Expanded(
-                  child: Opacity(
-                      opacity: opacity.value,
-                      child: Image.asset('assets/logo.png')),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RichText(
-                    text: const TextSpan(
-                        style: TextStyle(color: Colors.black),
-                        children: [
-                          TextSpan(text: 'Powered by '),
-                          TextSpan(
-                              text: 'int2.io',
-                              style: TextStyle(fontWeight: FontWeight.bold))
-                        ]),
-                  ),
-                )
-              ],
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: <Widget>[
+            Expanded(
+              child: Opacity(
+                  opacity: opacity.value,
+                  child: Image.asset('assets/logo.png')),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RichText(
+                text: const TextSpan(
+                    style: TextStyle(color: Colors.black),
+                    children: [
+                      TextSpan(text: 'Powered by '),
+                      TextSpan(
+                          text: 'int2.io',
+                          style: TextStyle(fontWeight: FontWeight.bold))
+                    ]),
+              ),
+            )
+          ],
         ),
       ),
     );
