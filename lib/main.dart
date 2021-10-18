@@ -1,8 +1,11 @@
+import 'package:daoan6/Pages/chat_detail/chat_detail.dart';
 import 'package:daoan6/Pages/home/home_page.dart';
 
 import 'package:daoan6/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'Pages/chat/chat.dart';
 
 late bool isFirst;
 Future<void>  main() async {

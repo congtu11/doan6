@@ -18,7 +18,8 @@ class IconBtnWithCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      margin: EdgeInsets.only(top: 5),
       padding: const EdgeInsets.all(4.0),
       child: InkWell(
         borderRadius: BorderRadius.circular(100),
@@ -28,13 +29,13 @@ class IconBtnWithCounter extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.all(getProportionateScreenWidth(12)),
-              height: getProportionateScreenWidth(46),
-              width: getProportionateScreenWidth(46),
-              decoration: BoxDecoration(
+              height: getProportionateScreenWidth(40),
+              width: getProportionateScreenWidth(40),
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
               ),
-              child: SvgPicture.asset(svgSrc),
+              child: SvgPicture.asset(svgSrc,),
             ),
             if (numOfitem != 0)
               Positioned(
@@ -44,7 +45,7 @@ class IconBtnWithCounter extends StatelessWidget {
                   height: getProportionateScreenWidth(16),
                   width: getProportionateScreenWidth(16),
                   decoration: BoxDecoration(
-                    color: Color(0xFFFF4848),
+                    color: const Color(0xFFFF4848),
                     shape: BoxShape.circle,
                     border: Border.all(width: 1.5, color: Colors.white),
                   ),

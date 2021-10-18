@@ -1,4 +1,3 @@
-
 import 'package:daoan6/Pages/home/components/recommend_product.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,6 @@ import 'special_offers.dart';
 import 'dart:async';
 
 class Body extends StatefulWidget {
-
   @override
   State<Body> createState() => _BodyState();
 }
@@ -21,33 +19,24 @@ class _BodyState extends State<Body> {
   int currentPage = 0;
   PageController pageController = PageController();
 
-   newSlide() {
-    if(pageController.hasClients) {
+  newSlide() {
+    if (pageController.hasClients) {
       Timer.periodic(Duration(seconds: 4), (timer) {
-        if(currentPage <2 ) {
+        if (currentPage < 2) {
           currentPage += 1;
-        }
-        else if(currentPage == 2){
+        } else if (currentPage == 2) {
           currentPage = 0;
         }
-        pageController.animateToPage(currentPage, duration: Duration(milliseconds: 500), curve: Curves.linear);
-
+        pageController.animateToPage(currentPage,
+            duration: Duration(milliseconds: 500), curve: Curves.linear);
       });
-
     }
-
   }
 
   List<Map<String, String>> splashData = [
-    {
-      "image": "assets/images/hoa1.jpg"
-    },
-    {
-      "image": "assets/images/hoa2.jpg"
-    },
-    {
-      "image": "assets/images/hoa3.jpg"
-    },
+    {"image": "assets/images/hoa1.jpg"},
+    {"image": "assets/images/hoa2.jpg"},
+    {"image": "assets/images/hoa3.jpg"},
   ];
   @override
   void initState() {
@@ -56,9 +45,8 @@ class _BodyState extends State<Body> {
       print(pageController.hasClients.toString());
       newSlide();
     });
-
-
   }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -72,21 +60,23 @@ class _BodyState extends State<Body> {
                 Expanded(
                   flex: 4,
                   child: PageView.builder(
-                    onPageChanged: (value) {
-                      setState(() {
-                        currentPage = value;
-                      });
-                    },
-                    itemCount: 3,
-                    controller: pageController,
-                    itemBuilder: (context, index) => GestureDetector(
-                      child: Container(
-                        height: 200,
-                        width: SizeConfig.screenWidth,
-                          child: Image.asset(splashData[index]["image"]!,fit: BoxFit.fill,)
-                        ,),
-                    )
-                  ),
+                      onPageChanged: (value) {
+                        setState(() {
+                          currentPage = value;
+                        });
+                      },
+                      itemCount: 3,
+                      controller: pageController,
+                      itemBuilder: (context, index) => GestureDetector(
+                            child: Container(
+                              height: 200,
+                              width: SizeConfig.screenWidth,
+                              child: Image.asset(
+                                splashData[index]["image"]!,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8),
@@ -94,7 +84,7 @@ class _BodyState extends State<Body> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
                       splashData.length,
-                          (index) => buildDot(index: index),
+                      (index) => buildDot(index: index),
                     ),
                   ),
                 )
@@ -112,6 +102,7 @@ class _BodyState extends State<Body> {
       ),
     );
   }
+
   AnimatedContainer buildDot({required int index}) {
     return AnimatedContainer(
       duration: kAnimationDuration,

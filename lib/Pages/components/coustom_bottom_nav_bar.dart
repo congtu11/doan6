@@ -1,4 +1,7 @@
+import 'package:daoan6/Pages/chat/chat.dart';
 import 'package:daoan6/Pages/home/home_page.dart';
+import 'package:daoan6/Pages/profile/profile_screen.dart';
+import 'package:daoan6/Pages/wishlish/wishlish.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -19,12 +22,12 @@ class CustomBottomNavBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.grey.withOpacity(0.1),
         boxShadow: [
           BoxShadow(
             offset: const Offset(0, -15),
             blurRadius: 20,
-            color: const Color(0xFFDADADA).withOpacity(0.15),
+            color: Colors.transparent,
           ),
         ],
         borderRadius: const BorderRadius.only(
@@ -48,12 +51,24 @@ class CustomBottomNavBar extends StatelessWidget {
                     Navigator.pushNamed(context, HomeScreen.routeName),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
-                onPressed: () {},
+                icon: SvgPicture.asset("assets/icons/Heart Icon.svg",
+                  color: MenuState.favourite == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, WishList.routeName);
+                },
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg"),
-                onPressed: () {},
+                icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg",
+                  color: MenuState.message == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, ChatScreen.routeName);
+                },
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -63,7 +78,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       : inActiveIconColor,
                 ),
                 onPressed: () {
-                  // Navigator.pushNamed(context, ProfileScreen.routeName)
+                  Navigator.pushNamed(context, ProfileScreen.routeName);
                 }
 
               ),
