@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'profile_menu.dart';
-import 'profile_pic.dart';
+import 'components/profile_menu.dart';
+import 'components/profile_pic.dart';
 
-class Body extends StatelessWidget {
+class ProfileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

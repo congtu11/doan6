@@ -54,8 +54,6 @@ class ChatInputField extends StatelessWidget {
                         ),
                       ),
                     ),
-
-
                   ],
                 ),
               ),
@@ -63,8 +61,7 @@ class ChatInputField extends StatelessWidget {
             SizedBox(width: 10),
             Icon(
               Icons.send,
-              color: Colors.green
-                  .withOpacity(0.64),
+              color: Colors.green.withOpacity(0.64),
               size: 30,
             ),
           ],

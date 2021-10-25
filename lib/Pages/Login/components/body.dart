@@ -1,13 +1,11 @@
-import 'package:daoan6/Pages/components/no_account_text.dart';
-import 'package:daoan6/Pages/components/socal_card.dart';
+
 import 'package:flutter/material.dart';
+
 import '../../../size_config.dart';
 import 'sign_form.dart';
 
-
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -20,44 +18,13 @@ class Body extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.04),
-                Text(
-                  "Welcome Back",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: getProportionateScreenWidth(28),
-                    fontWeight: FontWeight.bold,
+                Container(
+                  child: Center(
+                    child: Image.asset("assets/images/Logo.png"),
                   ),
+                  height: getProportionateScreenHeight(200),
                 ),
-                const Text(
-                  "Sign in with your email and password  \nor continue with social media",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: "Muli"
-                  ),
-                ),
-                SizedBox(height: SizeConfig.screenHeight * 0.08),
                 const SignForm(),
-                SizedBox(height: SizeConfig.screenHeight * 0.08),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SocalCard(
-                      icon: "assets/icons/google-icon.svg",
-                      press: () {},
-                    ),
-                    SocalCard(
-                      icon: "assets/icons/facebook-2.svg",
-                      press: () {},
-                    ),
-                    SocalCard(
-                      icon: "assets/icons/twitter.svg",
-                      press: () {},
-                    ),
-                  ],
-                ),
-                SizedBox(height: getProportionateScreenHeight(20)),
-                const NoAccountText(),
               ],
             ),
           ),

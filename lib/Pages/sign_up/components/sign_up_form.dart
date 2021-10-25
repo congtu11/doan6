@@ -51,16 +51,17 @@ class _SignUpFormState extends State<SignUpForm> {
       child: Column(
         children: [
           buildEmailFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(height: getProportionateScreenHeight(25)),
           buildPasswordFormField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(height: getProportionateScreenHeight(25)),
           buildConformPassFormField(),
+          SizedBox(height: getProportionateScreenHeight(10)),
           FormError(errors: errors),
-          SizedBox(height: getProportionateScreenHeight(40)),
+          SizedBox(height: getProportionateScreenHeight(30)),
           DefaultButton(
             text: "Continue",
             press: () {
-              if (_formKey.currentState!.validate()) {
+              if (_formKey.currentState!.validate() && errors.isEmpty == true) {
                 _formKey.currentState!.save();
                 var data = {
                   'name'  : name,
@@ -85,6 +86,8 @@ class _SignUpFormState extends State<SignUpForm> {
                     default: "Error";
                   }
                 });
+
+
               }
             },
           ),
@@ -108,10 +111,10 @@ class _SignUpFormState extends State<SignUpForm> {
       validator: (value) {
         if (value!.isEmpty) {
           addError(error: kPassNullError);
-          return "";
+          return null;
         } else if ((password != value)) {
           addError(error: kMatchPassError);
-          return "";
+          return null;
         }
         return null;
       },
@@ -142,10 +145,10 @@ class _SignUpFormState extends State<SignUpForm> {
       validator: (value) {
         if (value!.isEmpty) {
           addError(error: kPassNullError);
-          return "";
+          return null;
         } else if (value.length < 8) {
           addError(error: kShortPassError);
-          return "";
+          return null;
         }
         return null;
       },
@@ -176,10 +179,10 @@ class _SignUpFormState extends State<SignUpForm> {
       validator: (value) {
         if (value!.isEmpty) {
           addError(error: kEmailNullError);
-          return "";
+          return null;
         } else if (!emailValidatorRegExp.hasMatch(value)) {
           addError(error: kInvalidEmailError);
-          return "";
+          return null;
         }
         return null;
       },

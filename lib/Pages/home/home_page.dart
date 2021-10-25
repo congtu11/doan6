@@ -1,12 +1,12 @@
-import 'package:daoan6/Pages/components/coustom_bottom_nav_bar.dart';
+import 'package:daoan6/Pages/chat/chat_body.dart';
 import 'package:daoan6/Pages/components/custom_appbar.dart';
-import 'package:daoan6/Pages/home/components/search_field.dart';
+
+import 'package:daoan6/Pages/wishlish/wishlistbody.dart';
 import 'package:daoan6/size_config.dart';
 import 'package:flutter/material.dart';
 
-import '../../enums.dart';
 import 'components/body.dart';
-import 'components/icon_btn_with_counter.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static String routeName = "/home";
@@ -16,20 +16,51 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  int _selectedIndex = 0;
 
-  @override
-  Widget build(BuildContext context) {
-    SizeConfig().init(context);
-    return Scaffold(
-      appBar: CustomAppbar(),
-      extendBodyBehindAppBar: true,
-      body: Body(),
-      bottomNavigationBar:
-          const CustomBottomNavBar(selectedMenu: MenuState.home),
-    );
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
-}
+    static const List<Widget> _widgetOptions = <Widget>[
+      HomeBody(),
+      WishListBody(),
+      ChatBody(),
+    ];
+    @override
+    void initState() {
+      super.initState();
+    }
+
+    @override
+    Widget build(BuildContext context) {
+      SizeConfig().init(context);
+      return Scaffold(
+          appBar: CustomAppbar(),
+          extendBodyBehindAppBar: true,
+          body: _widgetOptions.elementAt(_selectedIndex),
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.green.withOpacity(0.1),
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.favorite),
+                label: 'Wishlist',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.school),
+                label: 'Message',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.amber[800],
+            onTap: _onItemTapped,
+          ),
+
+      );
+    }
+  }
