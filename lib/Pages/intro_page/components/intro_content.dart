@@ -4,36 +4,40 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class SplashContent extends StatelessWidget {
-  const SplashContent({
-    Key? key,
-    required this.text,
-    required this.image,
-  }) : super(key: key);
-  final String text, image;
+  const SplashContent(
+      {Key? key,
+      required this.text,
+      required this.image,
+      required this.subtext})
+      : super(key: key);
+  final String text, subtext, image;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Spacer(),
-        Text(
-          "TOKOTO",
-          style: TextStyle(
-            fontSize: getProportionateScreenWidth(36),
-            color: kPrimaryColor,
-            fontWeight: FontWeight.bold,
-          ),
+        SizedBox(
+          height: getProportionateScreenHeight(100),
         ),
-        Text(
-          text,
-          textAlign: TextAlign.center,
-        ),
-        Spacer(flex: 2),
         Image.asset(
           image,
           height: getProportionateScreenHeight(265),
           width: getProportionateScreenWidth(235),
         ),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: getProportionateScreenWidth(25),
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(height: getProportionateScreenWidth(20),),
+        Text(
+          subtext,
+          style: TextStyle(),
+          textAlign: TextAlign.center,
+        )
       ],
     );
   }

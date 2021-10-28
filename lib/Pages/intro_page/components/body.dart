@@ -1,36 +1,55 @@
-import 'package:daoan6/Pages/Login/sign_in_screen.dart';
-import 'package:daoan6/Pages/components/default_button.dart';
+import 'dart:async';
+
+import 'package:daoan6/Pages/Login/login_screen.dart';
 import 'package:flutter/material.dart';
-
-
-// This is the best practice
-import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../components/intro_content.dart';
-
 
 class Body extends StatefulWidget {
   @override
   _BodyState createState() => _BodyState();
 }
 
-class _BodyState extends State<Body> {
+class _BodyState extends State<Body> with TickerProviderStateMixin {
+
+  late AnimationController scaleController;
+  late Animation<double> scaleAnimation;
   int currentPage = 0;
+  PageController pageController = PageController();
   List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to Tokoto, Let’s shop!",
-      "image": "assets/images/splash_1.png"
+      "text": "Find your Comfort\nFood here",
+      "subtext":
+          "Here You Can find a chef or dish for every \ntaste and color.Endjoy!",
+      "image": "assets/images/Illustartion.png"
     },
     {
-      "text":
-          "We help people conect with store \naround United State of America",
-      "image": "assets/images/splash_2.png"
-    },
-    {
-      "text": "We show the easy way to shop. \nJust stay at home with us",
-      "image": "assets/images/splash_3.png"
+      "text": "Food Ninja is Where Your\n" "Comfort Food Lives",
+      "subtext": "Enjoy a fast and smooth food delivery at\nyour doorstep",
+      "image": "assets/images/Illustration2.png"
     },
   ];
+  @override
+  void initState() {
+    super.initState();
+    scaleController = AnimationController(vsync: this, duration: Duration(milliseconds: 500))
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          Navigator.push(context, AnimatingRoute(page: SignInScreen(), route: SignInScreen()));
+          Timer(Duration(milliseconds: 300), () {
+            scaleController.reset();
+          });
+        }
+      });
+    scaleAnimation = Tween<double>(begin: 0.0, end: 16.0).animate(scaleController);
+
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,34 +65,77 @@ class _BodyState extends State<Body> {
                     currentPage = value;
                   });
                 },
+                controller: pageController,
                 itemCount: splashData.length,
                 itemBuilder: (context, index) => SplashContent(
                   image: splashData[index]["image"]!,
                   text: splashData[index]['text']!,
+                  subtext: splashData[index]['subtext']!,
                 ),
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(20)),
                 child: Column(
                   children: <Widget>[
-                    Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                        splashData.length,
-                        (index) => buildDot(index: index),
-                      ),
-                    ),
-                    Spacer(flex: 3),
-                    DefaultButton(
-                      text: "Continue",
-                      press: () {
-                        Navigator.pushNamed(context, SignInScreen.routeName);
+                    InkWell(
+                      onTap: () {
+                        if (currentPage == 1) {
+                          scaleController.forward();
+                        } else {
+                          pageController.nextPage(
+                              duration: Duration(milliseconds: 10),
+                              curve: Curves.bounceInOut);
+                        }
                       },
+                      child: Stack(
+                        children: [
+                          Ink(
+                            width: getProportionateScreenWidth(200),
+                            height: getProportionateScreenHeight(80),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                gradient: LinearGradient(
+                                    begin: Alignment.bottomRight,
+                                    end: Alignment.topLeft,
+                                    colors: [
+                                      Color(0xFF15BE77),
+                                      Color(0xFF53E88B),
+                                    ])),
+                            child: Center(
+                              child: Text(
+                                "Next",
+                                style: TextStyle(
+                                  fontSize: getProportionateScreenWidth(18),
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                          AnimatedBuilder(
+                              animation: scaleAnimation,
+                              builder: (c,child) => Transform.scale(
+                                scale: scaleAnimation.value,
+                                child: Container(
+                                  width: 100,
+                                  height: 100,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        gradient: LinearGradient(
+                                            begin: Alignment.bottomRight,
+                                            end: Alignment.topLeft,
+                                            colors: [
+                                              Color(0xFF15BE77),
+                                              Color(0xFF53E88B),
+                                            ]))
+                                ),
+                              )
+                          )
+                        ],
+                      ),
                     ),
                     Spacer(),
                   ],
@@ -86,16 +148,34 @@ class _BodyState extends State<Body> {
     );
   }
 
-  AnimatedContainer buildDot({required int index}) {
-    return AnimatedContainer(
-      duration: kAnimationDuration,
-      margin: EdgeInsets.only(right: 5),
-      height: 6,
-      width: currentPage == index ? 20 : 6,
-      decoration: BoxDecoration(
-        color: currentPage == index ? kPrimaryColor : Color(0xFFD8D8D8),
-        borderRadius: BorderRadius.circular(3),
-      ),
-    );
-  }
+  // AnimatedContainer buildDot({required int index}) {
+  //   return AnimatedContainer(
+  //     duration: kAnimationDuration,
+  //     margin: EdgeInsets.only(right: 5),
+  //     height: 6,
+  //     width: currentPage == index ? 20 : 6,
+  //     decoration: BoxDecoration(
+  //       color: currentPage == index ? kPrimaryColor : Color(0xFFD8D8D8),
+  //       borderRadius: BorderRadius.circular(3),
+  //     ),
+  //   );
+  // }
+}
+
+class AnimatingRoute extends PageRouteBuilder {
+  final Widget page;
+  final Widget route;
+  AnimatingRoute({required this.page, required this.route})
+      : super(
+            pageBuilder: (BuildContext context, Animation<double> animation,
+                    Animation<double> secondaryAnimation) =>
+                page,
+            transitionsBuilder: (BuildContext context,
+                    Animation<double> animation,
+                    Animation<double> secondaryAnimation,
+                    Widget child) =>
+                FadeTransition(
+                  opacity: animation,
+                  child: route,
+                ));
 }

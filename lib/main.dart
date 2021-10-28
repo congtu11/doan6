@@ -1,10 +1,10 @@
+import 'package:daoan6/Pages/Login/login_screen.dart';
+import 'package:daoan6/Pages/splash_page.dart';
 import 'package:daoan6/routes.dart';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-import 'Pages/home/home_page.dart';
 
 
 late bool isFirst;
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: routes,
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: SplashScreen(),
     );
   }
 }
