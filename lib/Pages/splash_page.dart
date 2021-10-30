@@ -1,7 +1,5 @@
-import 'package:daoan6/Pages/Login/login_screen.dart';
-import 'package:daoan6/main.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../size_config.dart';
 import 'intro_page/intro_page.dart';
@@ -34,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   void navigationPage() {
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (_) => IntroPage()));
+        .pushReplacement(MaterialPageRoute(builder: (_) => const IntroPage()));
   }
 
   @override

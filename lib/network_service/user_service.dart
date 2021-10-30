@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:daoan6/models/access_token.dart';
 import 'package:daoan6/network_service/request_service.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:http/http.dart';
@@ -21,7 +20,7 @@ class UserService {
   void init() async {
     bool internetConnection = await checkInternetConnectivity();
     if(internetConnection) {
-      _storage = FlutterSecureStorage();
+      _storage = const FlutterSecureStorage();
       apiHelper = ApiHelper();
     }
 

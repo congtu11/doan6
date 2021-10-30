@@ -6,6 +6,8 @@ import '../../../size_config.dart';
 import '../components/intro_content.dart';
 
 class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
+
   @override
   _BodyState createState() => _BodyState();
 }
@@ -32,11 +34,11 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    scaleController = AnimationController(vsync: this, duration: Duration(milliseconds: 500))
+    scaleController = AnimationController(vsync: this, duration: const Duration(milliseconds: 200))
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           Navigator.push(context, AnimatingRoute(page: SignInScreen(), route: SignInScreen()));
-          Timer(Duration(milliseconds: 300), () {
+          Timer(const Duration(milliseconds: 320), () {
             scaleController.reset();
           });
         }
@@ -87,7 +89,7 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                           scaleController.forward();
                         } else {
                           pageController.nextPage(
-                              duration: Duration(milliseconds: 10),
+                              duration: const Duration(milliseconds: 10),
                               curve: Curves.bounceInOut);
                         }
                       },
@@ -98,7 +100,7 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                             height: getProportionateScreenHeight(80),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.bottomRight,
                                     end: Alignment.topLeft,
                                     colors: [
@@ -124,7 +126,7 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                                   height: 100,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
-                                        gradient: LinearGradient(
+                                        gradient: const LinearGradient(
                                             begin: Alignment.bottomRight,
                                             end: Alignment.topLeft,
                                             colors: [
@@ -137,7 +139,7 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                         ],
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),

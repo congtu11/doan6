@@ -1,6 +1,6 @@
-import 'package:daoan6/Pages/Login/login_screen.dart';
 import 'package:daoan6/Pages/splash_page.dart';
 import 'package:daoan6/routes.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,7 +16,7 @@ Future<void> main() async {
     prefs.setBool("isFirst", false);
   }
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: routes,
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

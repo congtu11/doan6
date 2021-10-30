@@ -8,9 +8,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class ApiHelper {
   final String _rootUrl = 'http://192.168.43.23:8000/api/v1';
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
   late Map<String,String> token;
-  ApiService() {
+  apiService() {
     getToken();
   }
 
@@ -44,7 +44,7 @@ class ApiHelper {
           headers: _setHeaders()
       ).timeout(const Duration(seconds: 5));
     } on TimeoutException catch (value) {
-      return http.Response("Null", 408);
+      return http.Response(value.toString(), 408);
     }
   }
 

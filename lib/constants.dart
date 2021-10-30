@@ -1,7 +1,7 @@
 import 'package:daoan6/size_config.dart';
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xFF41B0EE);
+const kPrimaryColor = Color(0xFF53E88B);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
