@@ -2,6 +2,7 @@ import 'package:daoan6/Pages/components/default_button.dart';
 import 'package:daoan6/Pages/signup/components/header.dart';
 import 'package:daoan6/Pages/signup/components/top_background.dart';
 import 'package:daoan6/Pages/signup/upload_photo.dart';
+import 'package:daoan6/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../size_config.dart';
@@ -72,17 +73,7 @@ class PaymentMethod extends StatelessWidget {
     return Container(
       height: getProportionateScreenHeight(73),
       width: getProportionateScreenWidth(330),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.05),
-              spreadRadius: 10,
-              blurRadius: 10,
-            )
-          ]
-      ),
+      decoration: lightBoxWithShadow,
       child: Center(
         child: Image.asset(payment!,),
       ),

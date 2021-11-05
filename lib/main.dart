@@ -1,9 +1,12 @@
-import 'package:daoan6/Pages/splash_page.dart';
+
+import 'package:daoan6/Pages/detailmenu/detailmenu.dart';
+import 'package:daoan6/Pages/orderdetails/orderdetails.dart';
+import 'package:daoan6/Pages/your_order/yourorder.dart';
 import 'package:daoan6/routes.dart';
-
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'Pages/profile/profile.dart';
 
 
 
@@ -33,7 +36,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: routes,
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      home:  YourOrder(),
     );
   }
 }

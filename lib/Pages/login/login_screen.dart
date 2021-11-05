@@ -1,5 +1,6 @@
 import 'package:daoan6/Pages/components/default_button.dart';
 import 'package:daoan6/Pages/signup/signup_screen.dart';
+import 'package:daoan6/constants.dart';
 import 'package:daoan6/size_config.dart';
 
 import 'package:flutter/material.dart';
@@ -64,19 +65,7 @@ class SignInScreen extends StatelessWidget {
                   child: Container(
                     margin: EdgeInsets.symmetric(
                         horizontal: getProportionateScreenWidth(25)),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: const BorderRadius.all(Radius.circular(15)),
-                      border: Border.all(color: Colors.black12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.05),
-                          spreadRadius: 10,
-                          blurRadius: 10,
-                          // changes position of shadow
-                        ),
-                      ],
-                    ),
+                    decoration: lightBoxWithBorder,
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: TextField(
@@ -96,19 +85,7 @@ class SignInScreen extends StatelessWidget {
                   width: SizeConfig.screenWidth,
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(25)),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: const BorderRadius.all(Radius.circular(15)),
-                      border: Border.all(color: Colors.black12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.1),
-                          spreadRadius: 10,
-                          blurRadius: 10,
-                          // changes position of shadow
-                        ),
-                      ],
-                    ),
+                    decoration: lightBoxWithBorder,
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: TextField(
@@ -140,18 +117,7 @@ class SignInScreen extends StatelessWidget {
                         Expanded(
                           child: Container(
                             margin: EdgeInsets.only(right: getProportionateScreenWidth(21/2)),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
-                                color: Colors.white,
-                                borderRadius: const BorderRadius.all(Radius.circular(15)),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.05),
-                                    spreadRadius: 10,
-                                    blurRadius: 10,
-                                    // changes position of shadow
-                                  ),
-                                ]),
+                            decoration: lightBoxWithBorder,
                             child: Center(
                               child: Row(
                                 mainAxisAlignment:
@@ -170,19 +136,7 @@ class SignInScreen extends StatelessWidget {
                         Expanded(
                           child: Container(
                             margin: EdgeInsets.only(left: getProportionateScreenWidth(21/2)),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
-                                color: Colors.white,
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(15)),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.05),
-                                    spreadRadius: 10,
-                                    blurRadius: 10,
-                                    // changes position of shadow
-                                  ),
-                                ]),
+                            decoration: lightBoxWithBorder,
                             child: Center(
                               child: Row(
                                 mainAxisAlignment:

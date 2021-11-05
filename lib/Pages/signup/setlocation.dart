@@ -1,5 +1,6 @@
 import 'package:daoan6/Pages/components/default_button.dart';
 import 'package:daoan6/Pages/signup/components/top_background.dart';
+import 'package:daoan6/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../size_config.dart';
@@ -38,21 +39,12 @@ class SetLocation extends StatelessWidget {
                         height: getProportionateScreenHeight(147),
                         width: getProportionateScreenWidth(330),
                         child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 10,
-                                spreadRadius: 10,
-                                color: Colors.grey.withOpacity(0.1)
-                              )
-                            ]
-                          ),
+                          decoration: lightBoxWithShadow,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Expanded(child: Row(
+                              Expanded(
+                                child: Row(
                                 children: [
                                   SizedBox(width: getProportionateScreenWidth(20),),
                                   const Icon(Icons.location_on_outlined,color: Colors.yellow,),
@@ -64,17 +56,7 @@ class SetLocation extends StatelessWidget {
                               ),),
                               Expanded(child: Container(
                                 margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(15),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 10,
-                                          spreadRadius: 10,
-                                          color: Colors.grey.withOpacity(0.1)
-                                      )
-                                    ]
-                                ),
+                                decoration: lightBoxWithShadow,
                                 child: const Center(
                                   child: Text("Set Location",style: TextStyle(
                                       fontWeight: FontWeight.bold
